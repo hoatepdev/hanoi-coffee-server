@@ -16,8 +16,9 @@ const DeletedAt = z.date().default(null).nullish();
 
 export const UserEntitySchema = z.object({
   id: ID,
-  name: Name,
   email: Email,
+  name: Name,
+  username: z.string().min(1, 'Username is required'),
   roles: z.array(Role.optional()).min(1),
   password: Password.optional(),
   createdAt: CreatedAt,
@@ -28,9 +29,11 @@ export const UserEntitySchema = z.object({
 type User = z.infer<typeof UserEntitySchema>;
 
 export class UserEntity extends BaseEntity<UserEntity>(UserEntitySchema) {
+  email: string;
+
   name: string;
 
-  email: string;
+  username: string;
 
   roles: RoleEntity[];
 

@@ -58,9 +58,9 @@ export default [
 
     rules: {
       'no-console': [
-        'error',
+        'warn',
         {
-          allow: ['error']
+          allow: ['warn']
         }
       ],
 

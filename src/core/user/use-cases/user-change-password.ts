@@ -21,7 +21,7 @@ export class UserChangePasswordUsecase implements IUsecase {
 
   @ValidateSchema(UserChangePasswordSchema)
   async execute(input: UserChangePasswordInput): Promise<UserChangePasswordOutput> {
-    const user = await this.repository.findOneWithRelation({ id: input.id }, { password: true });
+    const user = await this.repository.findOneWithRelation([{ id: input.id }], { password: true });
 
     if (!user) {
       throw new ApiNotFoundException('userNotFound');

@@ -24,6 +24,9 @@ export class UserSchema extends BaseEntity {
   name: string;
 
   @Column('text')
+  username: string;
+
+  @Column('text')
   email: string;
 
   @OneToOne(() => UserPasswordSchema, { cascade: ['insert', 'recover', 'update', 'remove', 'soft-remove'] })

@@ -1,4 +1,4 @@
-version: "2"
+version: '2'
 services:
   microservice-api:
     container_name: microservice-api
@@ -8,6 +8,6 @@ services:
       context: .
       dockerfile: ./Dockerfile
     ports:
-      - "3000:3000"
+      - '5000:5000'
     volumes:
       - ./src:/app/src

@@ -60,6 +60,7 @@ describe(UserUpdateUsecase.name, () => {
   const user = new UserEntity({
     id: getMockUUID(),
     name: 'Admin',
+    username: 'admin',
     email: 'admin@admin.com',
     roles: [new RoleEntity({ name: RoleEnum.USER })]
   });

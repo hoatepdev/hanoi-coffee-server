@@ -68,6 +68,7 @@ describe(UserChangePasswordUsecase.name, () => {
     id: getMockUUID(),
     email: 'admin@admin.com',
     name: 'Admin',
+    username: 'admin',
     password: new UserPasswordEntity({ password: '69bf0bc46f51b33377c4f3d92caf876714f6bbbe99e7544487327920873f9820' }),
     roles: [new RoleEntity({ name: RoleEnum.USER })]
   });

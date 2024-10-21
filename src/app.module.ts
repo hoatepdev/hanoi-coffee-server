@@ -6,6 +6,7 @@ import { CatModule } from '@/modules/cat/module';
 import { HealthModule } from '@/modules/health/module';
 import { LoginModule } from '@/modules/login/module';
 import { LogoutModule } from '@/modules/logout/module';
+import { RegisterModule } from '@/modules/register/module';
 import { UserModule } from '@/modules/user/module';
 import { AuthRoleGuard } from '@/observables/guards';
 
@@ -22,6 +23,7 @@ import { RoleModule } from './modules/role/module';
     HealthModule,
     UserModule,
     LoginModule,
+    RegisterModule,
     LogoutModule,
     CatModule,
     ResetPasswordModule,

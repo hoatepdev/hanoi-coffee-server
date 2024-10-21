@@ -54,6 +54,7 @@ describe(UserDeleteUsecase.name, () => {
     id: getMockUUID(),
     email: 'admin@admin.com',
     name: '*Admin',
+    username: 'admin',
     roles: [new RoleEntity({ name: RoleEnum.USER })],
     password: { id: getMockUUID(), password: '****' }
   });

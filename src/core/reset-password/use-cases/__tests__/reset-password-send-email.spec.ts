@@ -91,6 +91,7 @@ describe(ResetPasswordSendEmailUsecase.name, () => {
     id: getMockUUID(),
     email: 'admin@admin.com',
     name: 'Admin',
+    username: 'admin',
     roles: [new RoleEntity({ name: RoleEnum.USER })]
   });
 

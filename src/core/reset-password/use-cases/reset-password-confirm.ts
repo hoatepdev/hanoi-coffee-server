@@ -39,7 +39,7 @@ export class ResetPasswordConfirmUsecase implements IUsecase {
 
     const token = await this.token.verify<{ id: string }>(input.token);
 
-    const user = await this.userRepository.findOneWithRelation({ id: token.id }, { password: true });
+    const user = await this.userRepository.findOneWithRelation([{ id: token.id }], { password: true });
 
     if (!user) {
       throw new ApiNotFoundException('user not found');

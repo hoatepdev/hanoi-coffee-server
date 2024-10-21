@@ -26,9 +26,11 @@ export class LoginUsecase implements IUsecase {
   @ValidateSchema(LoginSchema)
   async execute(input: LoginInput, { tracing }: ApiTrancingInput): Promise<LoginOutput> {
     const user = await this.userRepository.findOneWithRelation(
-      {
-        email: input.email
-      },
+      [
+        {
+          email: input.email
+        }
+      ],
       { password: true }
     );
 

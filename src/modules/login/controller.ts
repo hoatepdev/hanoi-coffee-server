@@ -72,7 +72,7 @@ export class LoginController {
       }
     );
 
-    const user = await this.userRepository.findOneWithRelation({ email: profile.email }, { password: true });
+    const user = await this.userRepository.findOneWithRelation([{ email: profile.email }], { password: true });
 
     const tokenNewPassword = this.tokenService.sign({
       email: user.email,

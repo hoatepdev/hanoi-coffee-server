@@ -18,7 +18,8 @@ import { IUserRepository } from '../repository/user';
 
 export const UserCreateSchema = UserEntitySchema.pick({
   email: true,
-  name: true
+  name: true,
+  username: true
 })
   .merge(UserPasswordEntitySchema.pick({ password: true }))
   .merge(z.object({ roles: z.array(z.nativeEnum(RoleEnum)).min(1) }));
@@ -42,7 +43,7 @@ export class UserCreateUsecase implements IUsecase {
       throw new ApiNotFoundException('roleNotFound');
     }
 
-    const entity = new UserEntity({ name: input.name, email: input.email, roles: roles });
+    const entity = new UserEntity({ name: input.name, username: input.username, email: input.email, roles: roles });
 
     const passwordEntity = new UserPasswordEntity({ password: input.password });
 
