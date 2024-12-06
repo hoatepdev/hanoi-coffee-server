@@ -20,7 +20,7 @@ export default {
   setupFilesAfterEnv: ['../../test/initialization.ts'],
   testEnvironment: 'node',
   collectCoverageFrom: ['**/*.ts'],
-  coverageDirectory: '../../coverage',
+  coverageDirectory: '../coverage',
   coverageReporters: ['json-summary', 'lcov'],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/../../' })
 };
