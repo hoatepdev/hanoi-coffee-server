@@ -28,4 +28,4 @@ lerna-debug.log*
 *.sublime-workspace
 
 # Environment variables
-# .env
+.env
