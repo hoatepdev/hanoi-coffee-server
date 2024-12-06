@@ -11,7 +11,7 @@ for (const path of getDirectories('./src').map((p) => `./src/${p}`)) {
   scopes.push(...files.filter((item) => item.isDirectory()).map((item) => item.name));
 }
 
-scopes.push('remove', 'revert', 'conflict', 'config', 'entity', 'utils', 'deps', 'modules', 'test', 'migration');
+scopes.push('config', 'entity', 'utils', 'deps', 'modules', 'test', 'migration');
 
 module.exports = {
   extends: ['@commitlint/config-conventional'],
@@ -22,6 +22,6 @@ module.exports = {
   }
 };
 
-// type(scope): [TICKET-123] subject
+// type(scope): [#123] subject
 // type: build, chore, ci, docs, feat, fix, perf, refactor, revert, style, test
 // scope: scopes

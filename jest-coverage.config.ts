@@ -22,6 +22,6 @@ export default {
   },
   collectCoverageFrom: ['**/*.ts'],
   coverageDirectory: '../../coverage',
-  coverageReporters: ['json-summary', 'lcov'],
+  coverageReporters: ['json-summary', 'json', 'lcov'],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/../../' })
 };

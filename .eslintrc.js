@@ -30,6 +30,6 @@ module.exports = {
     'security/detect-non-literal-regexp': 'off',
     'security/detect-possible-timing-attacks': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',
-    '@typescript-eslint/ban-ts-comment': 'warn'
+    '@typescript-eslint/ban-ts-comment': 'off'
   }
 };
