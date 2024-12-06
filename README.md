@@ -1,17 +1,19 @@
-# Nestjs boilerplate Microservice API
+# HanoiCoffee API
 
 [![node version][node-image]][node-url]
 
 [node-image]: https://img.shields.io/badge/node.js-%3E=_18.0-green.svg?style=flat-square
 [node-url]: http://nodejs.org/download/
 
-In this microservice I used the best architecture concepts: Onion Architecture, DDD and Ports and Adapters.
+A production-ready NestJS microservice boilerplate implementing Clean Architecture principles (Onion Architecture, DDD, and Ports & Adapters).
+
+## Code Coverage
 
 | Statements                                                                               | Branches                                                                             | Functions                                                                              | Lines                                                                          |
 | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
 | ![Statements](https://img.shields.io/badge/statements-100%25-brightgreen.svg?style=flat) | ![Branches](https://img.shields.io/badge/branches-100%25-brightgreen.svg?style=flat) | ![Functions](https://img.shields.io/badge/functions-100%25-brightgreen.svg?style=flat) | ![Lines](https://img.shields.io/badge/lines-100%25-brightgreen.svg?style=flat) |
 
-### Building and Running the application
+## Quick Start
 
 - install dependencies
   ```
@@ -139,6 +141,12 @@ Creating a CRUD in Postgres and Mongo in seconds.
   ```
   $ yarn prettier
   ```
+
+## Environment Setup
+
+1. Copy `.env.example` to `.env`
+
+2. Update the `.env` file with your actual configuration values
 
 ### Architecture diagram
 

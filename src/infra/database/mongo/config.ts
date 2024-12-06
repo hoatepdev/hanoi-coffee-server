@@ -4,7 +4,6 @@ import { green } from 'colorette';
 import { mongoMigrateCli } from 'mongo-migrate-ts';
 import path from 'path';
 
-// eslint-disable-next-line no-console
 console.log(green(`ENV: ${process.env['NODE_ENV']} mongo migration running.\n`));
 
 mongoMigrateCli({

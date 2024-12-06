@@ -10,7 +10,7 @@ import { SwaggerRequest, SwaggerResponse } from './swagger';
 @Controller()
 @ApiTags('register')
 export class RegisterController {
-  constructor(private readonly loginUsecase: IRegisterAdapter) {}
+  constructor(private readonly registerUsecase: IRegisterAdapter) {}
 
   @Post('register')
   @ApiResponse(SwaggerResponse.register[200])
@@ -18,6 +18,6 @@ export class RegisterController {
   @ApiBody(SwaggerRequest.register)
   @Version('1')
   async register(@Req() { body, user, tracing }: ApiRequest): Promise<RegisterOutput> {
-    return this.loginUsecase.execute(body as RegisterInput, { user, tracing });
+    return this.registerUsecase.execute(body as RegisterInput, { user, tracing });
   }
 }

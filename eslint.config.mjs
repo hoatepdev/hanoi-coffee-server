@@ -57,13 +57,7 @@ export default [
     },
 
     rules: {
-      'no-console': [
-        'warn',
-        {
-          allow: ['warn']
-        }
-      ],
-
+      'no-console': 'off',
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
       '@typescript-eslint/interface-name-prefix': 'off',
@@ -73,7 +67,8 @@ export default [
       '@/no-throw-literal': 'error',
       'security/detect-non-literal-regexp': 'off',
       'security/detect-possible-timing-attacks': 'off',
-      '@typescript-eslint/no-unused-vars': 'error'
+      '@typescript-eslint/no-unused-vars': 'error',
+      '@typescript-eslint/ban-ts-comment': 'warn'
     }
   }
 ];

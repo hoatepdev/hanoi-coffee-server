@@ -21,3 +21,7 @@ module.exports = {
     'scope-enum': [2, 'always', scopes]
   }
 };
+
+// type(scope): [TICKET-123] subject
+// type: build, chore, ci, docs, feat, fix, perf, refactor, revert, style, test
+// scope: scopes

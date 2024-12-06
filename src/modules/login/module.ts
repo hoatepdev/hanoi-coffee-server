@@ -12,7 +12,7 @@ import { ILoginAdapter, IRefreshTokenAdapter } from './adapter';
 import { LoginController } from './controller';
 
 @Module({
-  imports: [TokenLibModule, UserModule, SecretsModule, HttpModule, UserModule],
+  imports: [TokenLibModule, UserModule, SecretsModule, HttpModule],
   controllers: [LoginController],
   providers: [
     {

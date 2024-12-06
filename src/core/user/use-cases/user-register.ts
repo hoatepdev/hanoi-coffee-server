@@ -2,10 +2,11 @@ import { z } from 'zod';
 
 import { RoleEnum } from '@/core/role/entity/role';
 import { IRoleRepository } from '@/core/role/repository/role';
-import { ITokenAdapter } from '@/libs/token';
+import { ILoggerAdapter } from '@/infra/logger';
+import { CreatedModel } from '@/infra/repository';
 import { ValidateSchema } from '@/utils/decorators';
-import { ApiNotFoundException } from '@/utils/exception';
-import { ApiTrancingInput, UserRequest } from '@/utils/request';
+import { ApiConflictException, ApiNotFoundException } from '@/utils/exception';
+import { ApiTrancingInput } from '@/utils/request';
 import { IUsecase } from '@/utils/usecase';
 
 import { UserEntity, UserEntitySchema } from '../entity/user';
@@ -21,12 +22,12 @@ export const RegisterSchema = UserEntitySchema.pick({
   .merge(z.object({ roles: z.array(z.nativeEnum(RoleEnum)).min(1) }));
 
 export type RegisterInput = z.infer<typeof RegisterSchema>;
-export type RegisterOutput = { accessToken: string; refreshToken: string };
+export type RegisterOutput = CreatedModel;
 
 export class RegisterUsecase implements IUsecase {
   constructor(
     private readonly userRepository: IUserRepository,
-    private readonly tokenService: ITokenAdapter,
+    private readonly loggerService: ILoggerAdapter,
     private readonly roleRepository: IRoleRepository
   ) {}
 
@@ -43,7 +44,7 @@ export class RegisterUsecase implements IUsecase {
     );
 
     if (userExists) {
-      throw new ApiNotFoundException('userExists');
+      throw new ApiConflictException('userExists');
     }
 
     const roles = await this.roleRepository.findIn({ name: input.roles });
@@ -64,14 +65,8 @@ export class RegisterUsecase implements IUsecase {
 
     tracing.logEvent('user-login', `${newUser}`);
 
-    const { token } = this.tokenService.sign({
-      email: userEntity.email,
-      name: userEntity.name,
-      roles: userEntity.roles.map((r) => r.name)
-    } as UserRequest);
+    this.loggerService.info({ message: 'user created successfully', obj: { user: newUser } });
 
-    const { token: refreshToken } = this.tokenService.sign({ userId: newUser.id });
-
-    return { accessToken: token, refreshToken };
+    return newUser;
   }
 }

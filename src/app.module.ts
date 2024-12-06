@@ -7,6 +7,7 @@ import { HealthModule } from '@/modules/health/module';
 import { LoginModule } from '@/modules/login/module';
 import { LogoutModule } from '@/modules/logout/module';
 import { RegisterModule } from '@/modules/register/module';
+import { SocialLoginModule } from '@/modules/social-login/module';
 import { UserModule } from '@/modules/user/module';
 import { AuthRoleGuard } from '@/observables/guards';
 
@@ -28,7 +29,8 @@ import { RoleModule } from './modules/role/module';
     CatModule,
     ResetPasswordModule,
     RoleModule,
-    PermissionModule
+    PermissionModule,
+    SocialLoginModule
   ],
   providers: [
     {

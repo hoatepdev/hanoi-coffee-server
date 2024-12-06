@@ -25,6 +25,7 @@ describe(LoginUsecase.name, () => {
         {
           provide: ILoginAdapter,
           useFactory: (userRepository: IUserRepository, token: ITokenAdapter) => {
+            // console.log('⭐ userRepository', userRepository);
             return new LoginUsecase(userRepository, token);
           },
           inject: [IUserRepository, ITokenAdapter]

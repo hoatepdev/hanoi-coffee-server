@@ -4,8 +4,8 @@ import { IRoleRepository } from '@/core/role/repository/role';
 import { IUserRepository } from '@/core/user/repository/user';
 import { RegisterUsecase } from '@/core/user/use-cases/user-register';
 import { HttpModule } from '@/infra/http';
+import { ILoggerAdapter, LoggerModule } from '@/infra/logger';
 import { SecretsModule } from '@/infra/secrets';
-import { ITokenAdapter, TokenLibModule } from '@/libs/token';
 
 import { RoleModule } from '../role/module';
 import { UserModule } from '../user/module';
@@ -13,15 +13,15 @@ import { IRegisterAdapter } from './adapter';
 import { RegisterController } from './controller';
 
 @Module({
-  imports: [TokenLibModule, UserModule, SecretsModule, HttpModule, UserModule, RoleModule],
+  imports: [LoggerModule, UserModule, SecretsModule, HttpModule, RoleModule],
   controllers: [RegisterController],
   providers: [
     {
       provide: IRegisterAdapter,
-      useFactory: (repository: IUserRepository, tokenService: ITokenAdapter, roleRepository: IRoleRepository) => {
-        return new RegisterUsecase(repository, tokenService, roleRepository);
+      useFactory: (repository: IUserRepository, loggerService: ILoggerAdapter, roleRepository: IRoleRepository) => {
+        return new RegisterUsecase(repository, loggerService, roleRepository);
       },
-      inject: [IUserRepository, ITokenAdapter, IRoleRepository]
+      inject: [IUserRepository, ILoggerAdapter, IRoleRepository]
     }
   ]
 })

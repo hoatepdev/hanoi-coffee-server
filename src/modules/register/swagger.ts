@@ -1,4 +1,5 @@
-import { RegisterInput, RegisterOutput } from '@/core/user/use-cases/user-register';
+import { RegisterInput } from '@/core/user/use-cases/user-register';
+import { RegisterResponse } from '@/utils/docs/data/register/response';
 import { Swagger } from '@/utils/docs/swagger';
 
 const BASE_URL = `api/v1`;
@@ -7,7 +8,7 @@ export const SwaggerResponse = {
   register: {
     200: Swagger.defaultResponseJSON({
       status: 200,
-      json: { accessToken: '<token>', refreshToken: '<token>' } as RegisterOutput,
+      json: RegisterResponse.create,
       description: 'user register.'
     }),
     404: Swagger.defaultResponseWithMultiplesError({

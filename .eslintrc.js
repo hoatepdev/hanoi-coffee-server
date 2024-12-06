@@ -19,7 +19,7 @@ module.exports = {
   },
   ignorePatterns: ['.eslintrc.js'],
   rules: {
-    'no-console': ['error', { allow: ['error'] }],
+    'no-console': 'off',
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
     '@typescript-eslint/interface-name-prefix': 'off',
@@ -29,6 +29,7 @@ module.exports = {
     '@typescript-eslint/no-throw-literal': 'error',
     'security/detect-non-literal-regexp': 'off',
     'security/detect-possible-timing-attacks': 'off',
-    '@typescript-eslint/no-unused-vars': 'error'
+    '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/ban-ts-comment': 'warn'
   }
 };

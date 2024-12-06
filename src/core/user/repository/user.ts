@@ -12,6 +12,6 @@ export abstract class IUserRepository extends IRepository<UserEntity> {
   abstract softRemove(entity: Partial<UserEntity>): Promise<UserEntity>;
   abstract findOneWithRelation(
     filter: Array<Partial<UserEntity>>,
-    relations: { [key in keyof Partial<UserEntity>]: true | false }
+    relations: { [key in keyof Partial<UserEntity>]: boolean }
   ): Promise<UserEntity>;
 }
