@@ -72,6 +72,6 @@ export class TestUtils {
   };
 
   static getMockUser = (): UserRequest => {
-    return { email: 'test', name: 'test', id: this.getMockUUID() } as UserRequest;
+    return { email: 'test', name: 'test', id: this.getMockUUID(), username: 'test' } as UserRequest;
   };
 }

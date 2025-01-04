@@ -84,6 +84,7 @@ describe(RefreshTokenUsecase.name, () => {
     id: TestUtils.getMockUUID(),
     email: 'admin@admin.com',
     name: 'Admin',
+    username: 'admin',
     roles: [new RoleEntity({ id: TestUtils.getMockUUID(), name: RoleEnum.USER })],
     password: { id: TestUtils.getMockUUID(), password: '***' }
   });

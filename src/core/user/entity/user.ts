@@ -13,11 +13,13 @@ const Role = RoleEntitySchema;
 const CreatedAt = z.date().nullish();
 const UpdatedAt = z.date().nullish();
 const DeletedAt = z.date().nullish();
+const Username = z.string().min(3).max(50);
 
 export const UserEntitySchema = z.object({
   id: ID,
   name: Name,
   email: Email,
+  username: Username,
   roles: z.array(Role.optional()).min(1),
   password: Password.optional(),
   createdAt: CreatedAt,
@@ -29,11 +31,9 @@ type User = z.infer<typeof UserEntitySchema>;
 
 export class UserEntity extends BaseEntity<UserEntity>() {
   name!: string;
-
+  username!: string;
   email!: string;
-
   roles!: RoleEntity[];
-
   password!: UserPasswordEntity;
 
   constructor(entity: User) {

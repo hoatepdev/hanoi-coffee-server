@@ -53,6 +53,7 @@ describe(UserUpdateUsecase.name, () => {
         expect(issues).toEqual([
           { message: 'Required', path: TestUtils.nameOf<UserUpdateInput>('id') },
           { message: 'Required', path: TestUtils.nameOf<UserUpdateInput>('name') },
+          { message: 'Required', path: TestUtils.nameOf<UserUpdateInput>('username') },
           { message: 'Required', path: TestUtils.nameOf<UserUpdateInput>('email') },
           { message: 'Required', path: TestUtils.nameOf<UserUpdateInput>('roles') }
         ]);
@@ -64,6 +65,7 @@ describe(UserUpdateUsecase.name, () => {
     id: TestUtils.getMockUUID(),
     name: 'Admin',
     email: 'admin@admin.com',
+    username: 'admin',
     roles: [new RoleEntity({ id: TestUtils.getMockUUID(), name: RoleEnum.USER })]
   });
 
@@ -71,6 +73,7 @@ describe(UserUpdateUsecase.name, () => {
     id: user.id,
     email: user.email,
     name: user.name,
+    username: user.username,
     roles: [RoleEnum.USER]
   };
 

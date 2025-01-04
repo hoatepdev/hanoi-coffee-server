@@ -64,6 +64,7 @@ describe(UserCreateUsecase.name, () => {
       (issues: ZodIssue[]) => {
         expect(issues).toEqual([
           { message: 'Required', path: TestUtils.nameOf<UserCreateInput>('email') },
+          { message: 'Required', path: TestUtils.nameOf<UserCreateInput>('username') },
           { message: 'Required', path: TestUtils.nameOf<UserCreateInput>('name') },
           { message: 'Required', path: TestUtils.nameOf<UserCreateInput>('password') },
           { message: 'Required', path: TestUtils.nameOf<UserCreateInput>('roles') }
@@ -75,6 +76,7 @@ describe(UserCreateUsecase.name, () => {
   const input: UserCreateInput = {
     email: 'admin@admin.com',
     name: 'Admin',
+    username: 'admin',
     password: '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918',
     roles: [RoleEnum.USER]
   };
@@ -91,6 +93,7 @@ describe(UserCreateUsecase.name, () => {
     id: TestUtils.getMockUUID(),
     email: 'admin@admin.com',
     name: 'Admin',
+    username: 'admin',
     roles: [new RoleEntity({ id: TestUtils.getMockUUID(), name: RoleEnum.USER })],
     password: new UserPasswordEntity({
       id: TestUtils.getMockUUID(),

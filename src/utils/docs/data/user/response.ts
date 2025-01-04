@@ -12,6 +12,7 @@ import { TestUtils } from '@/utils/tests';
 const entity = {
   id: TestUtils.getMockUUID(),
   email: 'admin@admin.com',
+  username: 'admin',
   name: 'Admin',
   roles: [
     new RoleEntity({
@@ -40,5 +41,5 @@ export const UsersResponse = {
   update: { ...fullEntity } as UserUpdateOutput,
   getById: fullEntity as UserGetByIdOutput,
   list: { docs: [fullEntity], limit: 10, page: 1, total: 1 } as UserListOutput,
-  me: { email: 'admin@admin.com', name: 'ADMIN', id: TestUtils.getMockUUID() } as UserRequest
+  me: { email: 'admin@admin.com', username: 'admin', name: 'ADMIN', id: TestUtils.getMockUUID() } as UserRequest
 };

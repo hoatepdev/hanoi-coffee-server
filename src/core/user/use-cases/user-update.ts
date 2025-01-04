@@ -14,6 +14,7 @@ import { IUserRepository } from '../repository/user';
 export const UserUpdateSchema = UserEntitySchema.pick({
   id: true,
   name: true,
+  username: true,
   email: true
 })
   .merge(z.object({ roles: z.array(z.nativeEnum(RoleEnum)) }))

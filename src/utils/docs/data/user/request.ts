@@ -6,12 +6,14 @@ import { UserUpdateInput } from '@/core/user/use-cases/user-update';
 export const UsersRequest = {
   create: {
     name: 'Admin',
+    username: 'admin',
     email: 'admin@admin.com',
     password: '*****',
     roles: [RoleEnum.USER]
   } as UserCreateInput,
   update: {
     name: 'Admin',
+    username: 'admin',
     email: 'admin@admin.com',
     roles: [RoleEnum.USER]
   } as UserUpdateInput,

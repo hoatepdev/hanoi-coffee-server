@@ -24,6 +24,7 @@ export class insertUser1727655177319 implements MigrationInterface {
       id: UUIDUtils.create(),
       email: 'admin@admin.com',
       name: 'Admin',
+      username: 'admin',
       roles: roles.map((r) => new RoleEntity(r))
     });
     entity.password = password;

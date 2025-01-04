@@ -19,6 +19,7 @@ import { IUserRepository } from '../repository/user';
 
 export const UserCreateSchema = UserEntitySchema.pick({
   email: true,
+  username: true,
   name: true
 })
   .merge(UserPasswordEntitySchema.pick({ password: true }))
@@ -40,7 +41,13 @@ export class UserCreateUsecase implements IUsecase {
       throw new ApiNotFoundException('roleNotFound');
     }
 
-    const entity = new UserEntity({ id: UUIDUtils.create(), name: input.name, email: input.email, roles });
+    const entity = new UserEntity({
+      id: UUIDUtils.create(),
+      name: input.name,
+      email: input.email,
+      username: input.username,
+      roles
+    });
 
     const passwordEntity = new UserPasswordEntity({ id: UUIDUtils.create(), password: input.password });
 

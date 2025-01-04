@@ -11,6 +11,7 @@
     "start": "yarn migration:run && node dist/src/main",
     "start:dev": "yarn migration:run && nest start --watch -b swc",
     "start:debug": "yarn migration:run && nest start --debug --watch",
+    "kill-port": "kill -9 $(lsof -t -i:3000,8088,8089)",
     "format": "prettier --write \"src/**/*.{ts,js,json}\"",
     "lint": "eslint \"{src,test}/**/*.{ts,js}\" --fix",
     "test": "jest --config=\"./jest.config.ts\" --detectOpenHandles",
