@@ -12,24 +12,29 @@ for (const path of getDirectories('./src').map((p) => `./src/${p}`)) {
 }
 
 scopes.push(
-  'remove',
-  'revert',
-  'conflict',
-  'config',
-  'entity',
-  'utils',
-  'deps',
+  'remove', // Remove files
+  'revert', // Revert changes
+  'conflict', // Conflict resolution
+  'config', // Configuration changes
+  'entity', // Entity changes
+  'utils', // Utility functions
+  'deps', // Dependency changes
   'modules',
   'test',
   'migration',
-  'core'
+  'core',
+  'docs', // Documentation changes
+  'ci', // CI/CD related changes
+  'build', // Build system changes
+  'style', // Code style/formatting changes
+  'perf', // Performance improvements
+  'security' // Security-related changes
 );
 
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   ignores: [(message) => message.includes('release')],
   rules: {
-    'scope-empty': [2, 'never'],
     'scope-enum': [2, 'always', scopes]
   }
 };

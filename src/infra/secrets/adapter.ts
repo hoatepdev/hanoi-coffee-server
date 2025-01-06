@@ -5,6 +5,8 @@ export abstract class ISecretsAdapter {
 
   HOST!: string;
 
+  CLIENT_URL!: string;
+
   LOG_LEVEL!: string;
 
   DATE_FORMAT!: string;

@@ -18,6 +18,8 @@ export class SecretsService implements ISecretsAdapter {
 
   HOST = this.config.get('HOST');
 
+  CLIENT_URL = this.config.get('CLIENT_URL');
+
   LOG_LEVEL = this.config.get('LOG_LEVEL');
 
   DATE_FORMAT = this.config.get('DATE_FORMAT');

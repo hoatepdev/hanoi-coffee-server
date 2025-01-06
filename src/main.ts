@@ -26,8 +26,7 @@ import { RequestTimeoutInterceptor } from './observables/interceptors/request-ti
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
-    bufferLogs: true,
-    cors: true
+    bufferLogs: true
   });
 
   const loggerService = app.get(ILoggerAdapter);
@@ -82,8 +81,15 @@ async function bootstrap() {
     HOST,
     ZIPKIN_URL,
     PROMETHUES_URL,
-    IS_PRODUCTION
+    IS_PRODUCTION,
+    CLIENT_URL
   } = app.get(ISecretsAdapter);
+
+  app.enableCors({
+    origin: [CLIENT_URL],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS']
+  });
 
   app.use(bodyParser.urlencoded({ extended: true }));
 

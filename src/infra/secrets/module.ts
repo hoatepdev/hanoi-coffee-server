@@ -23,6 +23,7 @@ import { EnvEnum } from './types';
         const SecretsSchema = z.object<ZodInferSchema<ISecretsAdapter>>({
           ENV: z.nativeEnum(EnvEnum),
           HOST: z.string(),
+          CLIENT_URL: z.string(),
           IS_LOCAL: z.boolean(),
           IS_PRODUCTION: z.boolean(),
           JWT_SECRET_KEY: z.string(),
