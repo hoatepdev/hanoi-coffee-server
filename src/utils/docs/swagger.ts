@@ -71,14 +71,12 @@ export const Swagger = {
     for (const key in messages) {
       examples[`${key}`] = {
         value: {
-          error: {
-            code: status,
-            traceid: '<traceId>',
-            context: '<context>',
-            message: messages[`${key}`].value,
-            timestamp: '<timestamp>',
-            path: route
-          }
+          code: status,
+          traceid: '<traceId>',
+          context: '<context>',
+          message: messages[`${key}`].value,
+          timestamp: '<timestamp>',
+          path: route
         } as ApiErrorType,
         description: messages[`${key}`].description
       };

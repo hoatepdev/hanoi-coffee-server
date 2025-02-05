@@ -8,6 +8,7 @@ import { RefreshTokenInput, RefreshTokenOutput } from '@/core/user/use-cases/use
 import { IHttpAdapter } from '@/infra/http';
 import { ISecretsAdapter } from '@/infra/secrets';
 import { ITokenAdapter } from '@/libs/token';
+import { ResponseMessage } from '@/utils/decorators';
 import { ApiRequest } from '@/utils/request';
 
 import { ILoginAdapter, IRefreshTokenAdapter } from './adapter';
@@ -26,7 +27,8 @@ export class LoginController {
   ) {}
 
   @Post('login')
-  @ApiResponse(SwaggerResponse.login[200])
+  @ResponseMessage('User created successfully')
+  @ApiResponse({ status: 200, description: 'User created successfully' })
   @ApiResponse(SwaggerResponse.login[404])
   @ApiBody(SwaggerRequest.login)
   @Version('1')

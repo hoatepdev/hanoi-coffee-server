@@ -71,14 +71,12 @@ export class ApiTimeoutException extends BaseException {
 }
 
 export type ApiErrorType = {
-  error: {
-    code: string | number;
-    traceid: string;
-    context: string;
-    message: string[];
-    timestamp: string;
-    path: string;
-  };
+  code: string | number;
+  traceid: string;
+  context: string;
+  message: string[];
+  timestamp: string;
+  path: string;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,7 +1,8 @@
 import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from '@nestjs/common';
+import { Reflector } from '@nestjs/core';
 import { SpanStatusCode } from '@opentelemetry/api';
 import { AxiosError } from 'axios';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ZodError } from 'zod';
 
@@ -9,8 +10,20 @@ import { ApiBadRequestException, ApiInternalServerException, ApiTimeoutException
 
 @Injectable()
 export class ExceptionHandlerInterceptor implements NestInterceptor {
+  constructor(private reflector: Reflector) {}
+
   intercept(executionContext: ExecutionContext, next: CallHandler): Observable<unknown> {
     return next.handle().pipe(
+      map((data) => {
+        const status = executionContext.switchToHttp().getResponse();
+
+        return {
+          status: 'success',
+          code: executionContext.switchToHttp().getResponse().statusCode,
+          message: this.reflector.get<string>('response_message', executionContext.getHandler()) || '',
+          data
+        };
+      }),
       catchError((error) => {
         error.status = this.getStatusCode(error);
 

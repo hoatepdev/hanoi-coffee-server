@@ -1,4 +1,5 @@
-import { ArgumentsHost, Catch, ExceptionFilter as AppExceptionFilter, HttpException } from '@nestjs/common';
+// eslint-disable-next-line simple-import-sort/imports
+import { ExceptionFilter as AppExceptionFilter, ArgumentsHost, Catch, HttpException } from '@nestjs/common';
 import { AxiosError } from 'axios';
 import { ZodError, ZodIssue, ZodUnrecognizedKeysIssue } from 'zod';
 
@@ -25,14 +26,12 @@ export class ExceptionHandlerFilter implements AppExceptionFilter {
     const message = this.getMessage(exception, status as number);
 
     response.status(status).json({
-      error: {
-        code: status,
-        traceid: exception.traceid,
-        context: exception.context ?? exception?.parameters?.context,
-        message,
-        timestamp: DateUtils.getDateStringWithFormat(),
-        path: request.url
-      }
+      code: status,
+      traceid: exception.traceid,
+      context: exception.context ?? exception?.parameters?.context,
+      message,
+      timestamp: DateUtils.getDateStringWithFormat(),
+      path: request.url
     } as ApiErrorType);
   }
 

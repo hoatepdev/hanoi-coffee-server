@@ -38,7 +38,7 @@ async function bootstrap() {
 
   app.useGlobalInterceptors(
     new RequestTimeoutInterceptor(new Reflector(), loggerService),
-    new ExceptionHandlerInterceptor(),
+    new ExceptionHandlerInterceptor(new Reflector()),
     new HttpLoggerInterceptor(loggerService),
     new TracingInterceptor(loggerService),
     new MetricsInterceptor()
@@ -86,7 +86,7 @@ async function bootstrap() {
   } = app.get(ISecretsAdapter);
 
   app.enableCors({
-    origin: [CLIENT_URL],
+    origin: [HOST, CLIENT_URL],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS']
   });
